@@ -1,0 +1,49 @@
+name: twix_ui
+description: Awesome UI components for Flutter, fully customizable
+version: 0.0.1
+homepage:
+topics:
+  - customizable ui
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  flutter_svg: ^2.0.10+1
+  lucide_icons_flutter: ^1.1.0
+  vector_graphics: ^1.1.11+1
+  cached_network_image: 3.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  fonts:
+    - family: Geist
+      fonts:
+        - asset: assets/fonts/geist/Geist-Thin.otf
+          weight: 100
+        - asset: assets/fonts/geist/Geist-UltraLight.otf
+          weight: 200
+        - asset: assets/fonts/geist/Geist-Light.otf
+          weight: 300
+        - asset: assets/fonts/geist/Geist-Regular.otf
+          weight: 400
+        - asset: assets/fonts/geist/Geist-Medium.otf
+          weight: 500
+        - asset: assets/fonts/geist/Geist-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/geist/Geist-Bold.otf
+          weight: 700
+        - asset: assets/fonts/geist/Geist-Black.otf
+          weight: 800
+        - asset: assets/fonts/geist/Geist-UltraBlack.otf
+          weight: 900
