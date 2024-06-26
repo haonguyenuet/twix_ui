@@ -58,6 +58,8 @@ export 'src/utils/animation_builder.dart';
 export 'src/utils/provider.dart';
 export 'src/utils/gesture_detector.dart';
 export 'src/utils/effects.dart';
+export 'src/utils/context_ext.dart';
+export 'src/utils/iterable.dart';
 
 // External libraries
 export 'package:flutter_animate/flutter_animate.dart' hide Effect;

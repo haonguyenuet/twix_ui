@@ -1,7 +1,7 @@
 name: twix_ui
 description: Awesome UI components for Flutter, fully customizable
 version: 0.0.1
-homepage:
+homepage: https://github.com/haonguyenuet/twix_ui.git
 topics:
   - customizable ui
 
