@@ -190,7 +190,7 @@ class _CardNotificationsState extends State<CardNotifications> {
                   ],
                 ),
               )
-              .separatedBy(const SizedBox(height: 16)),
+              .separatedBy(const SizedBox(height: 8)),
           const SizedBox(height: 16),
         ],
       ),

@@ -55,7 +55,7 @@ Future<T?> showTwixSheet<T>({
     context: context,
     builder: (context) => TwixSheetInheritedWidget(side: effectiveSide, child: builder(context)),
     barrierColor: barrierColor,
-    barrierLabel: barrierLabel,
+    barrierLabel: barrierLabel ?? '',
     barrierDismissible: isDismissible,
     useRootNavigator: useRootNavigator,
     routeSettings: routeSettings,

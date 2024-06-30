@@ -25,6 +25,7 @@ class SheetPage extends StatelessWidget {
               SheetStyle.primary => TwixButton.outline(
                   text: const Text('Open'),
                   onPressed: () => showTwixSheet(
+                    barrierLabel: '',
                     side: TwixSheetSide.right,
                     context: context,
                     builder: (context) => const EditProfileSheet(

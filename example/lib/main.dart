@@ -12,8 +12,8 @@ import 'package:example/pages/sheet.dart';
 import 'package:example/pages/toast.dart';
 import 'package:example/pages/typography.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:go_router/go_router.dart';
 import 'package:twix_ui/twix_ui.dart';
 
 void main() {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Uri.base.queryParameters['theme'] ?? 'light';
+    final theme = Uri.base.queryParameters['theme'] ?? 'dark';
     return TwixApp.router(
       title: 'Twilight x UI',
       routerConfig: _router,
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 // GoRouter configuration
 final _router = GoRouter(
   debugLogDiagnostics: true,
-  initialLocation: '/dialog',
+  initialLocation: '/sheet?style=side',
   routes: [
     GoRoute(
       path: '/button',
