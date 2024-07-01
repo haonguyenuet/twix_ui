@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:twix_ui/src/theme/color_scheme/base.dart';
 import 'package:twix_ui/src/theme/text_theme/text_theme.dart';
 import 'package:twix_ui/src/theme/text_theme/typography_default.dart';
@@ -21,64 +21,63 @@ import 'package:twix_ui/src/theme/widget_theme/toast.dart';
 import 'package:twix_ui/src/utils/gesture_detector.dart';
 import 'package:twix_ui/src/utils/position.dart';
 import 'package:twix_ui/src/widgets/portal.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 abstract class TwixWidgetThemeDefault {
-  static TwixButtonTheme filledButtonTheme({required TwixColorScheme colorScheme, required BorderRadius radius}) {
+  static TwixButtonTheme filledButtonTheme({required TwixColorScheme? colorScheme, required BorderRadius radius}) {
     return TwixButtonTheme(
       height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      backgroundColor: colorScheme.primary,
-      hoverBackgroundColor: colorScheme.primary.withOpacity(.9),
-      foregroundColor: colorScheme.primaryForeground,
-      hoverForegroundColor: colorScheme.primaryForeground,
+      backgroundColor: colorScheme?.primary,
+      hoverBackgroundColor: colorScheme?.primary.withOpacity(.9),
+      foregroundColor: colorScheme?.primaryForeground,
+      hoverForegroundColor: colorScheme?.primaryForeground,
       decoration: TwixDecoration(border: TwixBorder(radius: radius)),
     );
   }
 
   static TwixButtonTheme outlineButtonTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
   }) {
     return TwixButtonTheme(
       height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      hoverBackgroundColor: colorScheme.accent,
-      foregroundColor: colorScheme.primary,
-      hoverForegroundColor: colorScheme.accentForeground,
+      hoverBackgroundColor: colorScheme?.accent,
+      foregroundColor: colorScheme?.primary,
+      hoverForegroundColor: colorScheme?.accentForeground,
       decoration: TwixDecoration(
-        border: TwixBorder(radius: radius, color: colorScheme.input),
+        border: TwixBorder(radius: radius, color: colorScheme?.input),
       ),
     );
   }
 
   static TwixButtonTheme iconButtonTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
   }) {
     return TwixButtonTheme(
       width: 32,
       height: 32,
       padding: EdgeInsets.zero,
-      hoverBackgroundColor: colorScheme.accent,
-      foregroundColor: colorScheme.primary,
-      hoverForegroundColor: colorScheme.accentForeground,
+      hoverBackgroundColor: colorScheme?.accent,
+      foregroundColor: colorScheme?.primary,
+      hoverForegroundColor: colorScheme?.accentForeground,
       decoration: TwixDecoration(border: TwixBorder(radius: radius)),
     );
   }
 
   static TwixButtonTheme linkButtonTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
   }) {
     return TwixButtonTheme(
-      foregroundColor: colorScheme.primary,
-      hoverForegroundColor: colorScheme.primary,
+      foregroundColor: colorScheme?.primary,
+      hoverForegroundColor: colorScheme?.primary,
       hoverTextDecoration: TextDecoration.underline,
     );
   }
 
   static TwixPopoverTheme popoverTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
   }) {
     return TwixPopoverTheme(
@@ -90,11 +89,11 @@ abstract class TwixWidgetThemeDefault {
       shadows: TwixShadowsDefault.md,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: TwixDecoration(
-        color: colorScheme.popover,
+        color: colorScheme?.popover,
         shadows: TwixShadowsDefault.md,
         border: TwixBorder(
           radius: radius,
-          color: colorScheme.border,
+          color: colorScheme?.border,
         ),
       ),
       anchor: const TwixAnchorAuto(preferBelow: true, verticalOffset: 24),
@@ -102,7 +101,7 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixDecoration decorationTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
     required TwixTextTheme textTheme,
   }) {
@@ -110,17 +109,17 @@ abstract class TwixWidgetThemeDefault {
       secondaryBorder: const TwixBorder(padding: EdgeInsets.all(4)),
       secondaryFocusedBorder: TwixBorder(
         width: 2,
-        color: colorScheme.ring,
+        color: colorScheme?.ring,
         radius: radius.add(radius / 2),
         padding: const EdgeInsets.all(2),
       ),
       labelStyle: textTheme.bodyMedium.copyWith(
         fontWeight: FontWeight.w500,
-        color: colorScheme.foreground,
+        color: colorScheme?.foreground,
       ),
       errorStyle: textTheme.bodyMedium.copyWith(
         fontWeight: FontWeight.w500,
-        color: colorScheme.error,
+        color: colorScheme?.error,
       ),
       labelPadding: const EdgeInsets.only(bottom: 8),
       descriptionStyle: textTheme.bodyMedium,
@@ -128,7 +127,7 @@ abstract class TwixWidgetThemeDefault {
       errorPadding: const EdgeInsets.only(top: 8),
       errorLabelStyle: textTheme.bodyMedium.copyWith(
         fontWeight: FontWeight.w500,
-        color: colorScheme.error,
+        color: colorScheme?.error,
       ),
     );
   }
@@ -156,13 +155,13 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixSelectTheme selectTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
   }) {
     return TwixSelectTheme(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: TwixDecoration(
-        border: TwixBorder(radius: radius, color: colorScheme.input),
+        border: TwixBorder(radius: radius, color: colorScheme?.input),
       ),
       optionsPadding: const EdgeInsets.all(4),
       showScrollToTopChevron: true,
@@ -177,21 +176,21 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixOptionTheme optionTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
   }) {
     return TwixOptionTheme(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      hoveredBackgroundColor: colorScheme.accent,
+      hoveredBackgroundColor: colorScheme?.accent,
     );
   }
 
   static TwixCardTheme cardTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
   }) {
     return TwixCardTheme(
-      backgroundColor: colorScheme.card,
+      backgroundColor: colorScheme?.card,
       padding: const EdgeInsets.all(24),
-      border: Border.all(color: colorScheme.border),
+      border: Border.all(color: colorScheme?.border ?? Colors.transparent),
       radius: const BorderRadius.all(Radius.circular(8)),
       shadows: TwixShadowsDefault.sm,
       rowMainAxisSize: MainAxisSize.min,
@@ -204,18 +203,18 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixCheckboxTheme checkboxTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
   }) {
     return TwixCheckboxTheme(
       size: 16,
       duration: 100.milliseconds,
-      color: colorScheme.primary,
+      color: colorScheme?.primary,
       padding: const EdgeInsets.only(left: 8),
       decoration: TwixDecoration(
         border: TwixBorder(
           width: 1,
-          color: colorScheme.primary,
+          color: colorScheme?.primary,
           radius: radius,
         ),
       ),
@@ -223,19 +222,19 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixInputTheme inputTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
     required TwixTextTheme textTheme,
   }) {
     return TwixInputTheme(
-      style: textTheme.bodyMedium.copyWith(color: colorScheme.foreground),
+      style: textTheme.bodyMedium.copyWith(color: colorScheme?.foreground),
       placeholderStyle: textTheme.bodyMedium,
       placeholderAlignment: Alignment.topLeft,
       inputPadding: EdgeInsets.zero,
       decoration: TwixDecoration(
         border: TwixBorder(
           width: 2,
-          color: colorScheme.border,
+          color: colorScheme?.border,
           radius: radius,
         ),
       ),
@@ -244,7 +243,7 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixRadioTheme radioTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
   }) {
     const circleSize = 10.0;
     const radius = BorderRadius.all(Radius.circular(circleSize));
@@ -252,13 +251,13 @@ abstract class TwixWidgetThemeDefault {
       size: 16,
       circleSize: circleSize,
       duration: 100.milliseconds,
-      color: colorScheme.primary,
+      color: colorScheme?.primary,
       padding: const EdgeInsets.only(left: 8),
       decoration: TwixDecoration(
         shape: BoxShape.circle,
         border: TwixBorder(
           width: 1,
-          color: colorScheme.primary,
+          color: colorScheme?.primary,
         ),
         secondaryFocusedBorder: TwixBorder(radius: radius.add(radius / 2)),
       ),
@@ -266,7 +265,7 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixToastTheme primaryToastTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
     required TwixTextTheme textTheme,
   }) {
@@ -276,16 +275,16 @@ abstract class TwixWidgetThemeDefault {
       titleStyle: textTheme.titleSmall,
       descriptionStyle: textTheme.bodySmall,
       actionPadding: const EdgeInsets.only(left: 16),
-      border: Border.all(color: colorScheme.border),
+      border: Border.all(color: colorScheme?.border ?? Colors.transparent),
       shadows: TwixShadowsDefault.lg,
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme?.background,
       crossAxisAlignment: CrossAxisAlignment.center,
       padding: const EdgeInsets.fromLTRB(24, 24, 32, 24),
     );
   }
 
   static TwixToastTheme errorToastTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
     required TwixTextTheme textTheme,
   }) {
@@ -294,29 +293,29 @@ abstract class TwixWidgetThemeDefault {
       closeIconSrc: LucideIcons.x,
       titleStyle: textTheme.titleSmall.copyWith(
         fontWeight: FontWeight.w500,
-        color: colorScheme.errorForeground,
+        color: colorScheme?.errorForeground,
       ),
       descriptionStyle: textTheme.bodySmall.copyWith(
-        color: colorScheme.errorForeground.withOpacity(.8),
+        color: colorScheme?.errorForeground.withOpacity(.8),
       ),
       actionPadding: const EdgeInsets.only(left: 16),
-      border: Border.all(color: colorScheme.border),
+      border: Border.all(color: colorScheme?.border ?? Colors.transparent),
       shadows: TwixShadowsDefault.lg,
-      backgroundColor: colorScheme.error,
+      backgroundColor: colorScheme?.error,
       crossAxisAlignment: CrossAxisAlignment.center,
       padding: const EdgeInsets.fromLTRB(24, 24, 32, 24),
     );
   }
 
   static TwixDialogTheme primaryDialogTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
     required TwixTextTheme textTheme,
   }) {
     return TwixDialogTheme(
       closeIconSrc: LucideIcons.x,
       radius: const BorderRadius.all(Radius.circular(8)),
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme?.background,
       removeBorderRadiusIfTiny: false,
       expandActionsWhenTiny: true,
       closeIconPosition: const TwixPosition(top: 8, right: 8),
@@ -333,7 +332,7 @@ abstract class TwixWidgetThemeDefault {
       padding: const EdgeInsets.all(24),
       gap: 8,
       titleStyle: textTheme.titleMedium,
-      descriptionStyle: textTheme.bodyMedium.copyWith(color: colorScheme.mutedForeground),
+      descriptionStyle: textTheme.bodyMedium.copyWith(color: colorScheme?.mutedForeground),
       alignment: Alignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -341,12 +340,12 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixDialogTheme alertDialogTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required BorderRadius radius,
     required TwixTextTheme textTheme,
   }) {
     return TwixDialogTheme(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme?.background,
       radius: const BorderRadius.all(Radius.circular(8)),
       removeBorderRadiusIfTiny: false,
       expandActionsWhenTiny: true,
@@ -372,7 +371,7 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixSheetTheme sheetTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required TwixTextTheme textTheme,
   }) {
     return const TwixSheetTheme(
@@ -382,7 +381,7 @@ abstract class TwixWidgetThemeDefault {
   }
 
   static TwixAccordionTheme accordionTheme({
-    required TwixColorScheme colorScheme,
+    required TwixColorScheme? colorScheme,
     required TwixTextTheme textTheme,
   }) {
     const bezierCurve = Cubic(0.87, 0, 0.13, 1);

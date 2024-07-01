@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:twix_ui/src/theme/color_scheme/base.dart';
+import 'package:twix_ui/src/theme/color_scheme/collection.dart';
 import 'package:twix_ui/src/theme/text_theme/text_theme.dart';
 import 'package:twix_ui/src/theme/widget_theme/accordion.dart';
 import 'package:twix_ui/src/theme/widget_theme/button.dart';
@@ -23,8 +24,8 @@ import 'package:twix_ui/src/utils/responsive.dart';
 @immutable
 class TwixThemeData {
   factory TwixThemeData({
-    required TwixColorScheme colorScheme,
     required Brightness brightness,
+    TwixColorScheme? colorScheme,
     Iterable<ThemeExtension<dynamic>>? extensions,
     TwixButtonTheme? filledButtonTheme,
     TwixButtonTheme? outlineButtonTheme,
@@ -51,136 +52,137 @@ class TwixThemeData {
     TwixHoverStrategies? hoverStrategies,
     bool? disableSecondaryBorder,
   }) {
+    final effectiveColorScheme = colorScheme ?? const TwixColorSchemeCollection.light();
     final effectiveRadius = radius ?? const BorderRadius.all(Radius.circular(6));
     var effectiveTextTheme = TwixWidgetThemeDefault.textTheme().mergeWith(textTheme);
     effectiveTextTheme = effectiveTextTheme.copyWith(
       displayLarge: effectiveTextTheme.displayLarge.copyWith(
-        color: effectiveTextTheme.displayLarge.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.displayLarge.color ?? effectiveColorScheme.foreground,
       ),
       displayMedium: effectiveTextTheme.displayMedium.copyWith(
-        color: effectiveTextTheme.displayMedium.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.displayMedium.color ?? effectiveColorScheme.foreground,
       ),
       displaySmall: effectiveTextTheme.displaySmall.copyWith(
-        color: effectiveTextTheme.displaySmall.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.displaySmall.color ?? effectiveColorScheme.foreground,
       ),
       headlineLarge: effectiveTextTheme.headlineLarge.copyWith(
-        color: effectiveTextTheme.headlineLarge.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.headlineLarge.color ?? effectiveColorScheme.foreground,
       ),
       headlineMedium: effectiveTextTheme.headlineMedium.copyWith(
-        color: effectiveTextTheme.headlineMedium.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.headlineMedium.color ?? effectiveColorScheme.foreground,
       ),
       headlineSmall: effectiveTextTheme.headlineSmall.copyWith(
-        color: effectiveTextTheme.headlineSmall.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.headlineSmall.color ?? effectiveColorScheme.foreground,
       ),
       titleLarge: effectiveTextTheme.titleLarge.copyWith(
-        color: effectiveTextTheme.titleLarge.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.titleLarge.color ?? effectiveColorScheme.foreground,
       ),
       titleMedium: effectiveTextTheme.titleMedium.copyWith(
-        color: effectiveTextTheme.titleMedium.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.titleMedium.color ?? effectiveColorScheme.foreground,
       ),
       titleSmall: effectiveTextTheme.titleSmall.copyWith(
-        color: effectiveTextTheme.titleSmall.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.titleSmall.color ?? effectiveColorScheme.foreground,
       ),
       bodyLarge: effectiveTextTheme.bodyLarge.copyWith(
-        color: effectiveTextTheme.bodyLarge.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.bodyLarge.color ?? effectiveColorScheme.foreground,
       ),
       bodyMedium: effectiveTextTheme.bodyMedium.copyWith(
-        color: effectiveTextTheme.bodyMedium.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.bodyMedium.color ?? effectiveColorScheme.foreground,
       ),
       bodySmall: effectiveTextTheme.bodySmall.copyWith(
-        color: effectiveTextTheme.bodySmall.color ?? colorScheme.mutedForeground,
+        color: effectiveTextTheme.bodySmall.color ?? effectiveColorScheme.mutedForeground,
       ),
       labelLarge: effectiveTextTheme.labelLarge.copyWith(
-        color: effectiveTextTheme.labelLarge.color ?? colorScheme.mutedForeground,
+        color: effectiveTextTheme.labelLarge.color ?? effectiveColorScheme.mutedForeground,
       ),
       labelMedium: effectiveTextTheme.labelMedium.copyWith(
-        color: effectiveTextTheme.labelMedium.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.labelMedium.color ?? effectiveColorScheme.foreground,
       ),
       labelSmall: effectiveTextTheme.labelSmall.copyWith(
-        color: effectiveTextTheme.labelSmall.color ?? colorScheme.foreground,
+        color: effectiveTextTheme.labelSmall.color ?? effectiveColorScheme.foreground,
       ),
     );
     final effectiveDisableSecondaryBorder = disableSecondaryBorder ?? false;
     return TwixThemeData._internal(
-      colorScheme: colorScheme,
+      colorScheme: effectiveColorScheme,
       brightness: brightness,
       extensions: extensions,
       filledButtonTheme: TwixWidgetThemeDefault.filledButtonTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
       ).mergeWith(filledButtonTheme),
       outlineButtonTheme: TwixWidgetThemeDefault.outlineButtonTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
       ).mergeWith(outlineButtonTheme),
       iconButtonTheme: TwixWidgetThemeDefault.iconButtonTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
       ).mergeWith(iconButtonTheme),
       linkButtonTheme: TwixWidgetThemeDefault.linkButtonTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
       ).mergeWith(linkButtonTheme),
       radius: effectiveRadius,
       popoverTheme: TwixWidgetThemeDefault.popoverTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
       ).mergeWith(popoverTheme),
       decoration: TwixWidgetThemeDefault.decorationTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
         textTheme: effectiveTextTheme,
       ).mergeWith(decoration),
       textTheme: effectiveTextTheme,
       disabledOpacity: disabledOpacity ?? .5,
       selectTheme: TwixWidgetThemeDefault.selectTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
       ).mergeWith(selectTheme),
       optionTheme: TwixWidgetThemeDefault.optionTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
       ).mergeWith(optionTheme),
       cardTheme: TwixWidgetThemeDefault.cardTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
       ).mergeWith(cardTheme),
       checkboxTheme: TwixWidgetThemeDefault.checkboxTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
       ).mergeWith(checkboxTheme),
       inputTheme: TwixWidgetThemeDefault.inputTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
         textTheme: effectiveTextTheme,
       ).mergeWith(inputTheme),
       radioTheme: TwixWidgetThemeDefault.radioTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
       ).mergeWith(radioTheme),
       primaryToastTheme: TwixWidgetThemeDefault.primaryToastTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
         textTheme: effectiveTextTheme,
       ).mergeWith(primaryToastTheme),
       errorToastTheme: TwixWidgetThemeDefault.errorToastTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         radius: effectiveRadius,
         textTheme: effectiveTextTheme,
       ).mergeWith(errorToastTheme),
       breakpoints: breakpoints ?? TwixBreakpoints(),
       primaryDialogTheme: TwixWidgetThemeDefault.primaryDialogTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         textTheme: effectiveTextTheme,
         radius: effectiveRadius,
       ).mergeWith(primaryDialogTheme),
       alertDialogTheme: TwixWidgetThemeDefault.alertDialogTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         textTheme: effectiveTextTheme,
         radius: effectiveRadius,
       ).mergeWith(alertDialogTheme),
       sheetTheme: TwixWidgetThemeDefault.sheetTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         textTheme: effectiveTextTheme,
       ).mergeWith(sheetTheme),
       accordionTheme: TwixWidgetThemeDefault.accordionTheme(
-        colorScheme: colorScheme,
+        colorScheme: effectiveColorScheme,
         textTheme: effectiveTextTheme,
       ).mergeWith(accordionTheme),
       hoverStrategies: hoverStrategies ?? TwixWidgetThemeDefault.hoverStrategies(),

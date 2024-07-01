@@ -26,6 +26,7 @@ export 'src/widgets/portal.dart';
 
 // App Themes & Color Schemes
 export 'src/theme/color_scheme/base.dart';
+export 'src/theme/color_scheme/collection.dart';
 export 'src/theme/theme.dart';
 export 'src/theme/theme_data.dart';
 export 'src/theme/widget_theme/shadows.dart';
